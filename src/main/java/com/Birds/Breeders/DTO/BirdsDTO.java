@@ -17,7 +17,7 @@ public class BirdsDTO {
 	@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa")
 	private String fNac;
 	
-	private EnumSexo sexo; // MACHO o HEMBRA
+	private String sexo; // MACHO o HEMBRA
 	private Integer numAnilla;
 	private String especie;
 	private String nomCientif;
@@ -26,13 +26,14 @@ public class BirdsDTO {
 	
 	
 
+
 	public Breeder getBreeder() {
 		return breeder;
 	}
 	public void setBreeder(Breeder breeder) {
 		this.breeder = breeder;
 	}
-	public Long getId() {
+		public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
@@ -44,10 +45,13 @@ public class BirdsDTO {
 	public void setfNac(String fNac) {
 		this.fNac = fNac;
 	}
-	public EnumSexo getSexo() {
+	
+	
+
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(EnumSexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public Integer getNumAnilla() {
@@ -83,7 +87,7 @@ public class BirdsDTO {
 	
 	
 	public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
-			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, EnumSexo sexo, Integer numAnilla,
+			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, String sexo, Integer numAnilla,
 			String especie, String nomCientif, String color, Breeder breeder) {
 		super();
 		this.id = id;
@@ -98,6 +102,7 @@ public class BirdsDTO {
 	public BirdsDTO() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	
 	

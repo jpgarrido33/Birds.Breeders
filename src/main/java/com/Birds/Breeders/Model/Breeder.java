@@ -26,7 +26,7 @@ public class Breeder {
 	private String Nombre;
 	private String apellidos;
 	private LocalDate Fnac;
-	private LocalDate Sexo;
+	private String Sexo;
 	
 
 	
@@ -95,13 +95,13 @@ public class Breeder {
 
 
 
-	public LocalDate getSexo() {
+	public String getSexo() {
 		return Sexo;
 	}
 
 
 
-	public void setSexo(LocalDate sexo) {
+	public void setSexo(String sexo) {
 		Sexo = sexo;
 	}
 
@@ -127,7 +127,7 @@ public class Breeder {
 
 
 
-	public Breeder(Long id, Integer numCriador, String nombre, String apellidos, LocalDate fnac, LocalDate sexo,
+	public Breeder(Long id, Integer numCriador, String nombre, String apellidos, LocalDate fnac, String sexo,
 			List<Birds> birds) {
 		super();
 		this.id = id;

@@ -1,7 +1,8 @@
-package com.Birds.Breeders.Services;
+package com.Birds.Breeders.Mapper;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 			birdsDto.setNomCientif(entity.getNomCientif());
 			birdsDto.setNumAnilla(entity.getNumAnilla());
 			birdsDto.setSexo(entity.getSexo());
-			//birdsDto.setBreader(MapperBreeder.mapToDto(entity.getBreeder()));
+			birdsDto.setBreeder(entity.getBreeder());
 			
 		}
 				
@@ -53,22 +54,29 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 			birds.setNomCientif(dto.getNomCientif());
 			birds.setNumAnilla(dto.getNumAnilla());
 			birds.setSexo(dto.getSexo());
+			birds.setBreeder(dto.getBreeder());
 			
 		}
 		
-		return null;
+		return birds;
 	}
 
 	@Override
 	public List<BirdsDTO> mapListToDto(List<Birds> listEntity) {
-		// TODO Auto-generated method stub
-		return null;
+
+		final List<BirdsDTO> listBirdsDto=new ArrayList<>();
+		 listEntity.forEach((b)->{
+			final BirdsDTO birdsDto= mapToDto(b);
+			listBirdsDto.add(birdsDto);
+		});
+		return listBirdsDto;
 	}
 
 	@Override
 	public Page<BirdsDTO> mapPageToDto(Page<Birds> pageEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		return pageEntity.map(b-> mapToDto(b));
 	}
 
 

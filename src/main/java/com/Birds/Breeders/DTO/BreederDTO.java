@@ -22,8 +22,8 @@ public class BreederDTO {
 	private String apellidos;
 	@NotBlank(message="El campo fecha nacimiento no puede estar en  blanco")
 	private String Fnac;
-	@StringEnumeration(enumClass = EnumSexo.class) // creamos una anotacion para que solo valide MACHO o HEMBRA
-	private EnumSexo Sexo;
+	//@StringEnumeration(enumClass = EnumSexo.class) // creamos una anotacion para que solo valide MACHO o HEMBRA
+	private String Sexo;
 	public Long getId() {
 		return id;
 	}
@@ -54,10 +54,10 @@ public class BreederDTO {
 	public void setFnac(String fnac) {
 		Fnac = fnac;
 	}
-	public EnumSexo getSexo() {
+	public String getSexo() {
 		return Sexo;
 	}
-	public void setSexo(EnumSexo sexo) {
+	public void setSexo(String sexo) {
 		Sexo = sexo;
 	}
 	@Override
@@ -65,7 +65,7 @@ public class BreederDTO {
 		return "BreederDTO [id=" + id + ", numCriador=" + numCriador + ", Nombre=" + Nombre + ", apellidos=" + apellidos
 				+ ", Fnac=" + Fnac + ", Sexo=" + Sexo + "]";
 	}
-	public BreederDTO(Long id, Integer numCriador, String nombre, String apellidos, String fnac, EnumSexo sexo) {
+	public BreederDTO(Long id, Integer numCriador, String nombre, String apellidos, String fnac, String sexo) {
 		super();
 		this.id = id;
 		this.numCriador = numCriador;

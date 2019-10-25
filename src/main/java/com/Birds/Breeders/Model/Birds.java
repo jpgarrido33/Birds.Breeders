@@ -23,7 +23,7 @@ public class Birds {
 	@Column(unique = true)
 	private Long id;
 	private LocalDate fNac;
-	private EnumSexo sexo;
+	private String sexo;
 	private Integer numAnilla;
 	private String especie;
 	private String nomCientif;
@@ -53,11 +53,12 @@ public class Birds {
 
 
 
-	public EnumSexo getSexo() {
+
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(EnumSexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -137,7 +138,7 @@ public class Birds {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Birds(Long id, LocalDate fNac, EnumSexo sexo, Integer numAnilla, String especie, String nomCientif,
+	public Birds(Long id, LocalDate fNac, String sexo, Integer numAnilla, String especie, String nomCientif,
 			String color, List<com.Birds.Breeders.Model.Specimen> specimen, Breeder breeder) {
 		super();
 		this.id = id;
