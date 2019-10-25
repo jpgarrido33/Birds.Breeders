@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+import com.Birds.Breeders.Model.Breeder;
 import com.Birds.Breeders.Utils.EnumSexo;
 @Component
 public class BirdsDTO {
@@ -21,6 +22,16 @@ public class BirdsDTO {
 	private String especie;
 	private String nomCientif;
 	private String color;
+	private Breeder breeder;
+	
+	
+
+	public Breeder getBreeder() {
+		return breeder;
+	}
+	public void setBreeder(Breeder breeder) {
+		this.breeder = breeder;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -54,6 +65,11 @@ public class BirdsDTO {
 	public String getNomCientif() {
 		return nomCientif;
 	}
+	@Override
+	public String toString() {
+		return "BirdsDTO [id=" + id + ", fNac=" + fNac + ", sexo=" + sexo + ", numAnilla=" + numAnilla + ", especie="
+				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + ", breeder=" + breeder + "]";
+	}
 	public void setNomCientif(String nomCientif) {
 		this.nomCientif = nomCientif;
 	}
@@ -63,18 +79,12 @@ public class BirdsDTO {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	@Override
-	public String toString() {
-		return "BirdsDTO [id=" + id + ", fNac=" + fNac + ", sexo=" + sexo + ", numAnilla=" + numAnilla + ", especie="
-				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + "]";
-	}
-	public BirdsDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	
+	
 	public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
 			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, EnumSexo sexo, Integer numAnilla,
-			String especie, String nomCientif, String color) {
+			String especie, String nomCientif, String color, Breeder breeder) {
 		super();
 		this.id = id;
 		this.fNac = fNac;
@@ -83,7 +93,12 @@ public class BirdsDTO {
 		this.especie = especie;
 		this.nomCientif = nomCientif;
 		this.color = color;
+		this.breeder = breeder;
 	}
+	public BirdsDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 }

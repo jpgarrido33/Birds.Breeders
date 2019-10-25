@@ -11,4 +11,32 @@ public class SpecimenDTO {
 	private Long id;
 	@NotBlank(message="El campo nombre de especie no puede estar en  blanco")
 	private String nombreespecie;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNombreespecie() {
+		return nombreespecie;
+	}
+	public void setNombreespecie(String nombreespecie) {
+		this.nombreespecie = nombreespecie;
+	}
+	@Override
+	public String toString() {
+		return "SpecimenDTO [id=" + id + ", nombreespecie=" + nombreespecie + "]";
+	}
+	public SpecimenDTO(@NotNull(message = " el valor no puede ser nulo") Long id,
+			@NotBlank(message = "El campo nombre de especie no puede estar en  blanco") String nombreespecie) {
+		super();
+		this.id = id;
+		this.nombreespecie = nombreespecie;
+	}
+	public SpecimenDTO() {
+		super();
+	
+	}
+	
+	
 }

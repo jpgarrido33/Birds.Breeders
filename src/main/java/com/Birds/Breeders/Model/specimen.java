@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class specimen {
+public class Specimen {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
@@ -50,14 +50,14 @@ public class specimen {
 		return "specimen [id=" + id + ", nombreespecie=" + nombreespecie + ", birds=" + birds + "]";
 	}
 
-	public specimen(Long id, String nombreespecie, Birds birds) {
+	public Specimen(Long id, String nombreespecie, Birds birds) {
 		super();
 		this.id = id;
 		this.nombreespecie = nombreespecie;
 		this.birds = birds;
 	}
 
-	public specimen() {
+	public Specimen() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

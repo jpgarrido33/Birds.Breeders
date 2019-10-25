@@ -30,7 +30,7 @@ public class Birds {
 	private String color;
 	
 	@OneToMany(mappedBy = "birds")
-	private List<specimen> specimen;
+	private List<Specimen> specimen;
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Breeder breeder;
@@ -93,11 +93,11 @@ public class Birds {
 		this.color = color;
 	}
 
-	public List<specimen> getSpecimen() {
+	public List<Specimen> getSpecimen() {
 		return specimen;
 	}
 
-	public void setSpecimen(List<specimen> specimen) {
+	public void setSpecimen(List<Specimen> specimen) {
 		this.specimen = specimen;
 	}
 
@@ -138,7 +138,7 @@ public class Birds {
 	}
 
 	public Birds(Long id, LocalDate fNac, EnumSexo sexo, Integer numAnilla, String especie, String nomCientif,
-			String color, List<com.Birds.Breeders.Model.specimen> specimen, Breeder breeder) {
+			String color, List<com.Birds.Breeders.Model.Specimen> specimen, Breeder breeder) {
 		super();
 		this.id = id;
 		this.fNac = fNac;
