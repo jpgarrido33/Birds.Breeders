@@ -20,4 +20,47 @@ public class specimen {
 	
 	@ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Birds birds;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombreespecie() {
+		return nombreespecie;
+	}
+
+	public void setNombreespecie(String nombreespecie) {
+		this.nombreespecie = nombreespecie;
+	}
+
+	public Birds getBirds() {
+		return birds;
+	}
+
+	public void setBirds(Birds birds) {
+		this.birds = birds;
+	}
+
+	@Override
+	public String toString() {
+		return "specimen [id=" + id + ", nombreespecie=" + nombreespecie + ", birds=" + birds + "]";
+	}
+
+	public specimen(Long id, String nombreespecie, Birds birds) {
+		super();
+		this.id = id;
+		this.nombreespecie = nombreespecie;
+		this.birds = birds;
+	}
+
+	public specimen() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }
