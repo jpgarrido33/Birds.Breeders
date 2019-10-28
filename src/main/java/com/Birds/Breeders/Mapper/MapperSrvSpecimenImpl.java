@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
+
 import com.Birds.Breeders.DTO.SpecimenDTO;
 import com.Birds.Breeders.Model.Specimen;
 
+@Component
 public class MapperSrvSpecimenImpl implements MapperService<SpecimenDTO, Specimen > {
 
 	@Override
