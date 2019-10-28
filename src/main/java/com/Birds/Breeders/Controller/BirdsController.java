@@ -44,19 +44,19 @@ public class BirdsController {
 	}
 	
 	@PostMapping
-	public BirdsDTO creatBirdsDTO(@Valid @RequestBody BirdsDTO birdsDto) {
-		return mapper.mapToDto(BirdsSRV.createBirds(birdsDto));
+	public BirdsDTO createBirdsDTO(Long idBreeder, @RequestBody BirdsDTO birdsDto) {
+		return mapper.mapToDto(BirdsSRV.createBirds(idBreeder, birdsDto));
 		
 	}
 	
 	@PutMapping ("/{id}")
-	public BirdsDTO updateBirds(@PathVariable("id") Long id, @Valid @RequestBody BirdsDTO birdsDto ) {
+	public BirdsDTO updateBirds(@PathVariable("id") Long id, @RequestBody BirdsDTO birdsDto ) {
 		
 		return mapper.mapToDto(BirdsSRV.updateBirds(id, birdsDto));
 		
 	}
 
-	@DeleteMapping("/{id")
+	@DeleteMapping("/{id}")
 	public void deleteBirds(@PathVariable("id") Long id) {
 		BirdsSRV.deleteBirds(id);
 	}
