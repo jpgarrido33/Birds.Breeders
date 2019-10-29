@@ -44,8 +44,8 @@ public class BirdsController {
 	}
 	
 	@PostMapping
-	public BirdsDTO createBirdsDTO(Long idBreeder, @RequestBody BirdsDTO birdsDto) {
-		return mapper.mapToDto(BirdsSRV.createBirds(idBreeder, birdsDto));
+	public BirdsDTO createBirdsDTO(@RequestBody BirdsDTO birdsDto) {
+		return mapper.mapToDto(BirdsSRV.createBirds(birdsDto));
 		
 	}
 	

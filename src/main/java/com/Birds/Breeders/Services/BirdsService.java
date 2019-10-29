@@ -8,7 +8,7 @@ import com.Birds.Breeders.Model.Birds;
 
 public interface BirdsService {
 	
-	Birds createBirds (Long idBreeder, BirdsDTO  BirdsDto);
+	Birds createBirds ( BirdsDTO  BirdsDto);
 	
 	Birds getBirds (long id);
 

@@ -25,23 +25,10 @@ public class BirdsServiceImpl implements BirdsService {
 	private BreederService breederSRV;
 
 	@Override
-	public Birds createBirds(Long idBreeder,BirdsDTO birdsDto) {
+	public Birds createBirds(BirdsDTO birdsDto) {
 
-			final Birds birds=mapperBirds.mapToEntity(birdsDto);
-			birds.setBreeder(birdsDto.getBreeder());
-			birds.setColor(birdsDto.getColor());
-			birds.setEspecie(birdsDto.getEspecie());
-			birds.setfNac(LocalDate.parse(birdsDto.getfNac(),DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-			birds.setNomCientif(birds.getNomCientif());
-			birds.setNumAnilla(birdsDto.getNumAnilla());
-			birds.setSexo(birdsDto.getSexo());
-			birds.setBreeder(breederSRV.getBreeder(idBreeder));
-			
-			return birdsRepository.save(birds);
-			
-			//final Optional<Birds> birds= Optional.ofNullable(mapperBirds.mapToEntity(birdsDto));
-			//birds.get().setfNac(LocalDate.parse(birdsDto.getfNac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-			//return birdsRepository.save(birds.get());
+
+			return birdsRepository.save(mapperBirds.mapToEntity(birdsDto));
 	}
 
 	@Override
