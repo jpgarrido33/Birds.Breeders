@@ -6,11 +6,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
+import com.Birds.Breeders.Model.Breeder;
 import com.Birds.Breeders.Repository.BirdsRepository;
 import com.Birds.Breeders.Repository.BreederRepository;
 
@@ -23,6 +26,8 @@ public class BirdsServiceImpl implements BirdsService {
 	private BirdsRepository birdsRepository;
 	@Autowired
 	private BreederService breederSRV;
+	@Autowired
+	private BirdsService birdsSRV;
 
 	@Override
 	public Birds createBirds(BirdsDTO birdsDto) {
@@ -64,6 +69,19 @@ public class BirdsServiceImpl implements BirdsService {
 		birds.setNumAnilla(birdsDto.getNumAnilla());
 		birds.setSexo(birdsDto.getSexo());
 		
+		
+		return birdsRepository.save(birds);
+	}
+
+	@Override
+	public Birds createRelationBB(Long idbird, Long idbreeder) {
+		
+		Birds birds= birdsSRV.getBirds(idbird);
+		Breeder breeder=breederSRV.getBreeder(idbreeder);
+		
+		birds.setBreeder(breeder);
+		List<Birds> listbirds=new ArrayList<Birds>();
+		listbirds.add(birds);
 		
 		return birdsRepository.save(birds);
 	}

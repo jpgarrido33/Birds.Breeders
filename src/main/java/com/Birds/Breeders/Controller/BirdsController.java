@@ -55,6 +55,12 @@ public class BirdsController {
 		return mapper.mapToDto(BirdsSRV.updateBirds(id, birdsDto));
 		
 	}
+	
+	@PutMapping ("/{idBird}/breeder/{idBreeder}")
+	public BirdsDTO CreateRelationBirdsBreeder(@PathVariable("idBird") Long idbird,@PathVariable("idBreeder") Long idbreeder) {
+		
+		return mapper.mapToDto(BirdsSRV.createRelationBB(idbird, idbreeder));
+	}
 
 	@DeleteMapping("/{id}")
 	public void deleteBirds(@PathVariable("id") Long id) {

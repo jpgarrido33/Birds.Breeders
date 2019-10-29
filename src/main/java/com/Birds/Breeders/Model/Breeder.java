@@ -30,7 +30,7 @@ public class Breeder {
 	
 
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany//(mappedBy="breeder")
 	private List<Birds> birds= new ArrayList<Birds>();
 
 

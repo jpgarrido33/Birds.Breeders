@@ -78,10 +78,4 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 		return pageEntity.map(b-> mapToDto(b));
 	}
 
-
-
-	
-
-
-
 }

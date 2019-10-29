@@ -17,4 +17,6 @@ public interface BirdsService {
 	void deleteBirds (long id);
 	
 	Birds updateBirds (long id, BirdsDTO birdsDto );
+
+	Birds createRelationBB(Long idbird, Long idbreeder);
 }
