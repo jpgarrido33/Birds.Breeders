@@ -32,7 +32,7 @@ public class BirdsController {
 	private BirdsService BirdsSRV;
 	
 	@GetMapping
-	public Page<BirdsDTO> getPageBirdsDto(@PageableDefault(page = 0, value = 10) Pageable pageable){
+	public Page<BirdsDTO> getPageBirdsDto(@PageableDefault(page = 0, value = 25) Pageable pageable){
 		
 		return mapper.mapPageToDto(BirdsSRV.getListBirds(pageable));
 	}
