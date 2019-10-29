@@ -35,7 +35,7 @@ public class Breeder {
 	
 
 	
-	@OneToMany(mappedBy="breeder", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="breeder")
 	private List<Birds> birds= new ArrayList<Birds>();
 
 
@@ -124,11 +124,6 @@ public class Breeder {
 
 
 
-	@Override
-	public String toString() {
-		return "Breeder [id=" + id + ", numCriador=" + numCriador + ", Nombre=" + Nombre + ", apellidos=" + apellidos
-				+ ", Fnac=" + fNac + ", Sexo=" + Sexo + ", birds=" + birds + "]";
-	}
 
 
 
@@ -143,6 +138,17 @@ public class Breeder {
 		Sexo = sexo;
 		this.birds = birds;
 	}
+
+
+
+
+
+
+//	@Override
+//	public String toString() {
+//		return "Breeder [id=" + id + ", numCriador=" + numCriador + ", Nombre=" + Nombre + ", apellidos=" + apellidos
+//				+ ", fNac=" + fNac + ", Sexo=" + Sexo + ", birds=" + birds + "]";
+//	}
 
 
 

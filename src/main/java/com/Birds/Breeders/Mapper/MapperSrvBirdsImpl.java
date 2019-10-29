@@ -22,6 +22,7 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 	@Autowired 
 	private MapperService<BreederDTO, Breeder> MapperBreeder;
 	
+	
 	@Override
 	public BirdsDTO mapToDto(Birds entity) {
 		final BirdsDTO birdsDto=new BirdsDTO();
@@ -34,8 +35,8 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 			birdsDto.setNomCientif(entity.getNomCientif());
 			birdsDto.setNumAnilla(entity.getNumAnilla());
 			birdsDto.setSexo(entity.getSexo());
-			birdsDto.setBreeder(entity.getBreeder());
-			
+			birdsDto.setBreederDto(MapperBreeder.mapToDto(entity.getBreeder()));
+		
 		}
 				
 		return birdsDto;
@@ -53,7 +54,7 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 			birds.setNomCientif(dto.getNomCientif());
 			birds.setNumAnilla(dto.getNumAnilla());
 			birds.setSexo(dto.getSexo());
-			birds.setBreeder(dto.getBreeder());
+			birds.setBreeder(MapperBreeder.mapToEntity(dto.getBreederDto()));
 			
 		}
 		

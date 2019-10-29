@@ -46,10 +46,10 @@ public class Specimen {
 		this.birds = birds;
 	}
 
-	@Override
-	public String toString() {
-		return "specimen [id=" + id + ", nombreespecie=" + nombreespecie + ", birds=" + birds + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "specimen [id=" + id + ", nombreespecie=" + nombreespecie + ", birds=" + birds + "]";
+//	}
 
 	public Specimen(Long id, String nombreespecie, Birds birds) {
 		super();

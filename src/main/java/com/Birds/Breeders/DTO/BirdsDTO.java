@@ -22,16 +22,22 @@ public class BirdsDTO {
 	private String especie;
 	private String nomCientif;
 	private String color;
-	private Breeder breeder;
+	
+	private BreederDTO breederDto;
+	
+	
+
 	
 	
 
 
-	public Breeder getBreeder() {
-		return breeder;
+
+	
+		public BreederDTO getBreederDto() {
+		return breederDto;
 	}
-	public void setBreeder(Breeder breeder) {
-		this.breeder = breeder;
+	public void setBreederDto(BreederDTO breederDto) {
+		this.breederDto = breederDto;
 	}
 		public Long getId() {
 		return id;
@@ -69,10 +75,11 @@ public class BirdsDTO {
 	public String getNomCientif() {
 		return nomCientif;
 	}
+
 	@Override
 	public String toString() {
 		return "BirdsDTO [id=" + id + ", fNac=" + fNac + ", sexo=" + sexo + ", numAnilla=" + numAnilla + ", especie="
-				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + ", breeder=" + breeder + "]";
+				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + ", breederDto=" + breederDto + "]";
 	}
 	public void setNomCientif(String nomCientif) {
 		this.nomCientif = nomCientif;
@@ -85,10 +92,9 @@ public class BirdsDTO {
 	}
 	
 	
-	
 	public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
 			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, String sexo, Integer numAnilla,
-			String especie, String nomCientif, String color, Breeder breeder) {
+			String especie, String nomCientif, String color, BreederDTO breederDto) {
 		super();
 		this.id = id;
 		this.fNac = fNac;
@@ -97,11 +103,12 @@ public class BirdsDTO {
 		this.especie = especie;
 		this.nomCientif = nomCientif;
 		this.color = color;
-		this.breeder = breeder;
+		this.breederDto = breederDto;
 	}
 	public BirdsDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	
 
 
 	

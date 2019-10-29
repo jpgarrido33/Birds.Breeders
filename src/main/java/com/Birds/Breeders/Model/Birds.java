@@ -1,6 +1,7 @@
 package com.Birds.Breeders.Model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,8 +37,8 @@ public class Birds {
 	@Column
 	private String color;
 	
-	@OneToMany(mappedBy = "birds", fetch = FetchType.LAZY)
-	private List<Specimen> specimen;
+	@OneToMany(mappedBy = "birds")
+	private List<Specimen> specimen=new ArrayList<Specimen>();
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Breeder breeder;
@@ -117,28 +118,28 @@ public class Birds {
 		this.breeder = breeder;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((breeder == null) ? 0 : breeder.hashCode());
-		result = prime * result + ((color == null) ? 0 : color.hashCode());
-		result = prime * result + ((especie == null) ? 0 : especie.hashCode());
-		result = prime * result + ((fNac == null) ? 0 : fNac.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nomCientif == null) ? 0 : nomCientif.hashCode());
-		result = prime * result + ((numAnilla == null) ? 0 : numAnilla.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result + ((specimen == null) ? 0 : specimen.hashCode());
-		return result;
-	}
-
-	@Override
-	public String toString() {
-		return "Birds [id=" + id + ", fNac=" + fNac + ", sexo=" + sexo + ", numAnilla=" + numAnilla + ", especie="
-				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + ", specimen=" + specimen + ", breeder="
-				+ breeder + "]";
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((breeder == null) ? 0 : breeder.hashCode());
+//		result = prime * result + ((color == null) ? 0 : color.hashCode());
+//		result = prime * result + ((especie == null) ? 0 : especie.hashCode());
+//		result = prime * result + ((fNac == null) ? 0 : fNac.hashCode());
+//		result = prime * result + ((id == null) ? 0 : id.hashCode());
+//		result = prime * result + ((nomCientif == null) ? 0 : nomCientif.hashCode());
+//		result = prime * result + ((numAnilla == null) ? 0 : numAnilla.hashCode());
+//		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+//		result = prime * result + ((specimen == null) ? 0 : specimen.hashCode());
+//		return result;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "Birds [id=" + id + ", fNac=" + fNac + ", sexo=" + sexo + ", numAnilla=" + numAnilla + ", especie="
+//				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + ", specimen=" + specimen + ", breeder="
+//				+ breeder + "]";
+//	}
 
 	public Birds() {
 		super();
