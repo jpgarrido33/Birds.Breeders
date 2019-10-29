@@ -20,16 +20,23 @@ public class Birds {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
-	@Column(unique = true)
+	
+	@Column(unique = true, updatable = false)
 	private Long id;
+	@Column
 	private LocalDate fNac;
+	@Column
 	private String sexo;
+	@Column
 	private Integer numAnilla;
+	@Column
 	private String especie;
+	@Column
 	private String nomCientif;
+	@Column
 	private String color;
 	
-	@OneToMany(mappedBy = "birds")
+	@OneToMany(mappedBy = "birds", fetch = FetchType.LAZY)
 	private List<Specimen> specimen;
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)

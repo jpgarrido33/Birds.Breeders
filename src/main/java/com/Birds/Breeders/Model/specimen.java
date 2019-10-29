@@ -14,8 +14,9 @@ public class Specimen {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
-	@Column(unique = true)
+	@Column(unique = true, updatable = false)
 	private Long id;
+	@Column
 	private String nombreespecie;
 	
 	@ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.LAZY)

@@ -20,17 +20,22 @@ public class Breeder {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
-	@Column(unique = true)
+	@Column(unique = true, updatable = false)
 	private Long id;
+	@Column(unique = true)
 	private Integer numCriador;
+	@Column
 	private String Nombre;
+	@Column
 	private String apellidos;
+	@Column
 	private LocalDate fNac;
+	@Column
 	private String Sexo;
 	
 
 	
-	@OneToMany//(mappedBy="breeder")
+	@OneToMany(mappedBy="breeder", fetch = FetchType.LAZY)
 	private List<Birds> birds= new ArrayList<Birds>();
 
 
