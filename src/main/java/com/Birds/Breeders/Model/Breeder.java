@@ -25,7 +25,7 @@ public class Breeder {
 	private Integer numCriador;
 	private String Nombre;
 	private String apellidos;
-	private LocalDate Fnac;
+	private LocalDate fNac;
 	private String Sexo;
 	
 
@@ -84,13 +84,13 @@ public class Breeder {
 
 
 	public LocalDate getFnac() {
-		return Fnac;
+		return fNac;
 	}
 
 
 
 	public void setFnac(LocalDate fnac) {
-		Fnac = fnac;
+		fNac = fnac;
 	}
 
 
@@ -122,7 +122,7 @@ public class Breeder {
 	@Override
 	public String toString() {
 		return "Breeder [id=" + id + ", numCriador=" + numCriador + ", Nombre=" + Nombre + ", apellidos=" + apellidos
-				+ ", Fnac=" + Fnac + ", Sexo=" + Sexo + ", birds=" + birds + "]";
+				+ ", Fnac=" + fNac + ", Sexo=" + Sexo + ", birds=" + birds + "]";
 	}
 
 
@@ -134,7 +134,7 @@ public class Breeder {
 		this.numCriador = numCriador;
 		Nombre = nombre;
 		this.apellidos = apellidos;
-		Fnac = fnac;
+		fNac = fnac;
 		Sexo = sexo;
 		this.birds = birds;
 	}

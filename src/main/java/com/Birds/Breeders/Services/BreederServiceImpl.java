@@ -23,10 +23,8 @@ public class BreederServiceImpl implements BreederService {
 
 	@Override
 	public Breeder createBreeder(BreederDTO breederDto) {
-		
-		final Optional<Breeder> breeder = Optional.ofNullable(mapperBreeder.mapToEntity(breederDto));
 
-		return breederRepository.save(breeder.get());
+		return breederRepository.save(mapperBreeder.mapToEntity(breederDto));
 	}
 
 	@Override
@@ -54,7 +52,7 @@ public class BreederServiceImpl implements BreederService {
 		
 		breeder.setNombre(breederDto.getNombre());
 		breeder.setApellidos(breederDto.getApellidos());
-		breeder.setFnac(LocalDate.parse(breederDto.getFnac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		breeder.setFnac(LocalDate.parse(breederDto.getfNac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		breeder.setNumCriador(breederDto.getNumCriador());
 		breeder.setSexo(breederDto.getSexo());
 		return breeder;

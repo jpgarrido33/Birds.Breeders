@@ -23,7 +23,7 @@ public class MapperSrvBreederImpl implements MapperService<BreederDTO, Breeder> 
 		breederDto.setId(entity.getId());
 		breederDto.setNombre(entity.getNombre());
 		breederDto.setApellidos(entity.getApellidos());
-		breederDto.setFnac(entity.getFnac().toString());
+		breederDto.setfNac(entity.getFnac().toString());
 		breederDto.setNumCriador(entity.getNumCriador());
 		breederDto.setSexo(entity.getSexo());
 		
@@ -41,7 +41,7 @@ public class MapperSrvBreederImpl implements MapperService<BreederDTO, Breeder> 
 			breeder.setId(dto.getId());
 			breeder.setNombre(dto.getNombre());
 			breeder.setApellidos(dto.getApellidos());
-			breeder.setFnac(LocalDate.parse(dto.getFnac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			breeder.setFnac(LocalDate.parse(dto.getfNac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 			breeder.setNumCriador(dto.getNumCriador());
 			breeder.setSexo(dto.getSexo());
 		}

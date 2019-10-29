@@ -21,7 +21,7 @@ public class BreederDTO {
 	@NotBlank(message="El campo apellidos no puede estar en  blanco")
 	private String apellidos;
 	@NotBlank(message="El campo fecha nacimiento no puede estar en  blanco")
-	private String Fnac;
+	private String fNac;
 	//@StringEnumeration(enumClass = EnumSexo.class) // creamos una anotacion para que solo valide MACHO o HEMBRA
 	private String Sexo;
 	public Long getId() {
@@ -48,36 +48,39 @@ public class BreederDTO {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public String getFnac() {
-		return Fnac;
-	}
-	public void setFnac(String fnac) {
-		Fnac = fnac;
-	}
+	
 	public String getSexo() {
 		return Sexo;
 	}
 	public void setSexo(String sexo) {
 		Sexo = sexo;
 	}
-	@Override
-	public String toString() {
-		return "BreederDTO [id=" + id + ", numCriador=" + numCriador + ", Nombre=" + Nombre + ", apellidos=" + apellidos
-				+ ", Fnac=" + Fnac + ", Sexo=" + Sexo + "]";
+	
+	
+	public String getfNac() {
+		return fNac;
 	}
-	public BreederDTO(Long id, Integer numCriador, String nombre, String apellidos, String fnac, String sexo) {
-		super();
-		this.id = id;
-		this.numCriador = numCriador;
-		Nombre = nombre;
-		this.apellidos = apellidos;
-		Fnac = fnac;
-		Sexo = sexo;
+	public void setfNac(String fNac) {
+		this.fNac = fNac;
 	}
 	public BreederDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public BreederDTO(@NotNull(message = "El valor no puede ser nulo") Long id,
+			@NotNull(message = "El valor no puede ser nulo") Integer numCriador,
+			@NotBlank(message = "El campo nombre no puede estar en  blanco") String nombre,
+			@NotBlank(message = "El campo apellidos no puede estar en  blanco") String apellidos,
+			@NotBlank(message = "El campo fecha nacimiento no puede estar en  blanco") String fNac, String sexo) {
+		super();
+		this.id = id;
+		this.numCriador = numCriador;
+		Nombre = nombre;
+		this.apellidos = apellidos;
+		this.fNac = fNac;
+		Sexo = sexo;
+	}
+	
 	
 	
 }
