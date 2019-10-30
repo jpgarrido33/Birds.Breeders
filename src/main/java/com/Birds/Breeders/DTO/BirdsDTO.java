@@ -24,15 +24,22 @@ public class BirdsDTO {
 	private String color;
 	
 	private BreederDTO breederDto;
+	/* nuevo*/
+	private SpecimenDTO specimenDto;
+	
+
 	
 	
 
-	
-	
-
 
 
 	
+		public SpecimenDTO getSpecimenDto() {
+		return specimenDto;
+	}
+	public void setSpecimenDto(SpecimenDTO specimenDto) {
+		this.specimenDto = specimenDto;
+	}
 		public BreederDTO getBreederDto() {
 		return breederDto;
 	}

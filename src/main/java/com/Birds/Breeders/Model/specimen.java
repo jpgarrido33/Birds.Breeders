@@ -1,5 +1,8 @@
 package com.Birds.Breeders.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Specimen {
@@ -19,9 +23,12 @@ public class Specimen {
 	@Column
 	private String nombreespecie;
 	
-	@ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private Birds birds;
+//	@ManyToOne (cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//	private Birds birds;
 
+	@OneToMany(mappedBy="specimen")
+	private List<Birds> birds= new ArrayList<Birds>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -38,20 +45,18 @@ public class Specimen {
 		this.nombreespecie = nombreespecie;
 	}
 
-	public Birds getBirds() {
+
+
+	public List<Birds> getBirds() {
 		return birds;
 	}
 
-	public void setBirds(Birds birds) {
+	public void setBirds(List<Birds> birds) {
 		this.birds = birds;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "specimen [id=" + id + ", nombreespecie=" + nombreespecie + ", birds=" + birds + "]";
-//	}
-
-	public Specimen(Long id, String nombreespecie, Birds birds) {
+	
+	public Specimen(Long id, String nombreespecie, List<Birds> birds) {
 		super();
 		this.id = id;
 		this.nombreespecie = nombreespecie;

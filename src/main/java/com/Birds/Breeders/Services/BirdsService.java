@@ -19,4 +19,6 @@ public interface BirdsService {
 	Birds updateBirds (long id, BirdsDTO birdsDto );
 
 	Birds createRelationBB(Long idbird, Long idbreeder);
+
+	Birds createrelationBS(Long idBirds, Long idSpecimen);
 }

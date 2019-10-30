@@ -18,5 +18,5 @@ public interface SpecimenService {
 	
 	Specimen updateSpecimen ( Long id,SpecimenDTO specimendto);
 
-	Specimen createrelationSB(Long idSpecimen, Long idBirds);
+	
 }

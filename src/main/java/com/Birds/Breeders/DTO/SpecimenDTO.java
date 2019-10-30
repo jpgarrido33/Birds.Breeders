@@ -11,6 +11,10 @@ public class SpecimenDTO {
 	private Long id;
 	@NotBlank(message="El campo nombre de especie no puede estar en  blanco")
 	private String nombreespecie;
+	
+	private BirdsDTO birdsDto;
+	
+	
 	public Long getId() {
 		return id;
 	}

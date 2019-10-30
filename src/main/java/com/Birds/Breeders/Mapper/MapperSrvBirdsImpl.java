@@ -12,8 +12,10 @@ import org.springframework.stereotype.Component;
 
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.DTO.BreederDTO;
+import com.Birds.Breeders.DTO.SpecimenDTO;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Model.Breeder;
+import com.Birds.Breeders.Model.Specimen;
 
 
 @Component
@@ -21,6 +23,7 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 
 	@Autowired 
 	private MapperService<BreederDTO, Breeder> MapperBreeder;
+	@Autowired MapperService<SpecimenDTO, Specimen> MapperSpecimen;
 	
 	
 	@Override
@@ -36,6 +39,7 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 			birdsDto.setNumAnilla(entity.getNumAnilla());
 			birdsDto.setSexo(entity.getSexo());
 			birdsDto.setBreederDto(MapperBreeder.mapToDto(entity.getBreeder()));
+			birdsDto.setSpecimenDto(MapperSpecimen.mapToDto(entity.getSpemcimen()));
 		
 		}
 				
@@ -54,7 +58,8 @@ public class MapperSrvBirdsImpl implements MapperService<BirdsDTO, Birds> {
 			birds.setNomCientif(dto.getNomCientif());
 			birds.setNumAnilla(dto.getNumAnilla());
 			birds.setSexo(dto.getSexo());
-			birds.setBreeder(MapperBreeder.mapToEntity(dto.getBreederDto()));
+			//birds.setBreeder(MapperBreeder.mapToEntity(dto.getBreederDto()));
+			//birds.setSpemcimen(MapperSpecimen.mapToEntity(dto.getSpecimenDto()));
 			
 		}
 		

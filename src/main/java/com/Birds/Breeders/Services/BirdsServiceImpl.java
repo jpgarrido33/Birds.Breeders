@@ -14,6 +14,7 @@ import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Model.Breeder;
+import com.Birds.Breeders.Model.Specimen;
 import com.Birds.Breeders.Repository.BirdsRepository;
 import com.Birds.Breeders.Repository.BreederRepository;
 
@@ -28,6 +29,8 @@ public class BirdsServiceImpl implements BirdsService {
 	private BreederService breederSRV;
 	@Autowired
 	private BirdsService birdsSRV;
+	@Autowired
+	private SpecimenService specimenSRV;
 
 	@Override
 	public Birds createBirds(BirdsDTO birdsDto) {
@@ -64,7 +67,7 @@ public class BirdsServiceImpl implements BirdsService {
 		birds.setColor(birdsDto.getColor());
 		birds.setEspecie(birdsDto.getEspecie());
 		birds.setfNac(LocalDate.parse(birdsDto.getfNac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		birds.setNomCientif(birds.getNomCientif());
+		birds.setNomCientif(birdsDto.getNomCientif());
 		birds.setNumAnilla(birdsDto.getNumAnilla());
 		birds.setSexo(birdsDto.getSexo());
 		
@@ -79,6 +82,19 @@ public class BirdsServiceImpl implements BirdsService {
 		Breeder breeder=breederSRV.getBreeder(idbreeder);
 		
 		birds.setBreeder(breeder);
+		List<Birds> listbirds=new ArrayList<Birds>();
+		listbirds.add(birds);
+		
+		return birdsRepository.save(birds);
+	}
+
+	@Override
+	public Birds createrelationBS(Long idbirds, Long idSpecimen) {
+
+		Birds birds=birdsSRV.getBirds(idbirds);
+		Specimen specimen= specimenSRV.getSpecimen(idSpecimen);
+		
+		birds.setSpemcimen(specimen);
 		List<Birds> listbirds=new ArrayList<Birds>();
 		listbirds.add(birds);
 		

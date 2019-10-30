@@ -65,19 +65,4 @@ public class SpecimenServiceImpl implements SpecimenService {
 		return specimen;
 	}
 
-	@Override
-	public Specimen createrelationSB(Long idSpecimen, Long idBirds) {
-		
-		Birds birds=birdsSRV.getBirds(idBirds);
-		Specimen specimen=specimenSRV.getSpecimen(idSpecimen);
-		
-		specimen.setBirds(birds);
-		List<Specimen> listSpecimen=new ArrayList<Specimen>();
-		listSpecimen.add(specimen);
-		
-		return specimentRepository.save(specimen);
-	}
-
-
-
 }

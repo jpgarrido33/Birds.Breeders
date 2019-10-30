@@ -37,8 +37,10 @@ public class Birds {
 	@Column
 	private String color;
 	
-	@OneToMany(mappedBy = "birds")
-	private List<Specimen> specimen=new ArrayList<Specimen>();
+//	@OneToMany(mappedBy = "birds")
+//	private List<Specimen> specimen=new ArrayList<Specimen>();
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private Specimen specimen;
 	
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Breeder breeder;
@@ -58,8 +60,6 @@ public class Birds {
 	public void setfNac(LocalDate fNac) {
 		this.fNac = fNac;
 	}
-
-
 
 
 	public String getSexo() {
@@ -102,12 +102,13 @@ public class Birds {
 		this.color = color;
 	}
 
-	public List<Specimen> getSpecimen() {
+
+	public Specimen getSpemcimen() {
 		return specimen;
 	}
 
-	public void setSpecimen(List<Specimen> specimen) {
-		this.specimen = specimen;
+	public void setSpemcimen(Specimen spemcimen) {
+		this.specimen = spemcimen;
 	}
 
 	public Breeder getBreeder() {
@@ -118,36 +119,15 @@ public class Birds {
 		this.breeder = breeder;
 	}
 
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((breeder == null) ? 0 : breeder.hashCode());
-//		result = prime * result + ((color == null) ? 0 : color.hashCode());
-//		result = prime * result + ((especie == null) ? 0 : especie.hashCode());
-//		result = prime * result + ((fNac == null) ? 0 : fNac.hashCode());
-//		result = prime * result + ((id == null) ? 0 : id.hashCode());
-//		result = prime * result + ((nomCientif == null) ? 0 : nomCientif.hashCode());
-//		result = prime * result + ((numAnilla == null) ? 0 : numAnilla.hashCode());
-//		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-//		result = prime * result + ((specimen == null) ? 0 : specimen.hashCode());
-//		return result;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "Birds [id=" + id + ", fNac=" + fNac + ", sexo=" + sexo + ", numAnilla=" + numAnilla + ", especie="
-//				+ especie + ", nomCientif=" + nomCientif + ", color=" + color + ", specimen=" + specimen + ", breeder="
-//				+ breeder + "]";
-//	}
+
 
 	public Birds() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Birds(Long id, LocalDate fNac, String sexo, Integer numAnilla, String especie, String nomCientif,
-			String color, List<com.Birds.Breeders.Model.Specimen> specimen, Breeder breeder) {
+			String color, Specimen spemcimen, Breeder breeder) {
 		super();
 		this.id = id;
 		this.fNac = fNac;
@@ -156,9 +136,11 @@ public class Birds {
 		this.especie = especie;
 		this.nomCientif = nomCientif;
 		this.color = color;
-		this.specimen = specimen;
+		this.specimen = spemcimen;
 		this.breeder = breeder;
 	}
+
+
 
 	
 	

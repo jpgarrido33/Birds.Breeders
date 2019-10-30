@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Birds.Breeders.DTO.BirdsDTO;
+import com.Birds.Breeders.DTO.SpecimenDTO;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Services.BirdsService;
@@ -61,6 +62,13 @@ public class BirdsController {
 		
 		return mapper.mapToDto(BirdsSRV.createRelationBB(idbird, idbreeder));
 	}
+	
+	@PutMapping("/{idBirds}/specimen/{idSpecimen}")
+	public BirdsDTO createRelationspecimenBirds(@PathVariable ("idBirds") Long idbirds, @PathVariable ("idSpecimen") Long idSpecimen){
+		
+		return mapper.mapToDto(BirdsSRV.createrelationBS(idbirds,idSpecimen));
+	}
+	
 
 	@DeleteMapping("/{id}")
 	public void deleteBirds(@PathVariable("id") Long id) {
