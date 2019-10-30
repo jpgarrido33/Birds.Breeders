@@ -1,5 +1,7 @@
 package com.Birds.Breeders.Services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.Birds.Breeders.DTO.SpecimenDTO;
 import com.Birds.Breeders.Mapper.MapperService;
+import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Model.Specimen;
 import com.Birds.Breeders.Repository.SpecimenRepository;
 
@@ -20,6 +23,11 @@ public class SpecimenServiceImpl implements SpecimenService {
 	private MapperService<SpecimenDTO, Specimen> mapperSpecimen;
 	@Autowired
 	private SpecimenRepository specimentRepository;
+	@Autowired
+	private SpecimenService specimenSRV;
+	@Autowired
+	private BirdsService birdsSRV;
+	
 	
 	@Override
 	public Specimen createSpecimen(SpecimenDTO specimenDto) {
@@ -55,6 +63,19 @@ public class SpecimenServiceImpl implements SpecimenService {
 		specimen.setNombreespecie(specimendto.getNombreespecie());
 		
 		return specimen;
+	}
+
+	@Override
+	public Specimen createrelationSB(Long idSpecimen, Long idBirds) {
+		
+		Birds birds=birdsSRV.getBirds(idBirds);
+		Specimen specimen=specimenSRV.getSpecimen(idSpecimen);
+		
+		specimen.setBirds(birds);
+		List<Specimen> listSpecimen=new ArrayList<Specimen>();
+		listSpecimen.add(specimen);
+		
+		return specimentRepository.save(specimen);
 	}
 
 

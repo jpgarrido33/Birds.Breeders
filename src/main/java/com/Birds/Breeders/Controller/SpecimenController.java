@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,8 +50,14 @@ public class SpecimenController {
 	
 
 	@PutMapping ("/{id}")
-	public SpecimenDTO updatespecimen (@PathVariable ("id") Long id, @RequestBody SpecimenDTO specimenDto) {
+	public SpecimenDTO updateSpecimen (@PathVariable ("id") Long id, @RequestBody SpecimenDTO specimenDto) {
 		
 		return mapperSpecimen.mapToDto(specimenSRV.updateSpecimen(id, specimenDto));
+	}
+	
+	@DeleteMapping ("/{id}")
+	public void deleteSpecimen(@PathVariable ("id") Long id) {
+		
+		specimenSRV.deleteSpecimen(id);
 	}
 }

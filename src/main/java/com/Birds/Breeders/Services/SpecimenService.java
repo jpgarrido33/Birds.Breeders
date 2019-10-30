@@ -17,4 +17,6 @@ public interface SpecimenService {
 	void  deleteSpecimen (Long id);
 	
 	Specimen updateSpecimen ( Long id,SpecimenDTO specimendto);
+
+	Specimen createrelationSB(Long idSpecimen, Long idBirds);
 }
