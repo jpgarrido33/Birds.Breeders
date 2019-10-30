@@ -9,9 +9,9 @@ import javax.validation.ConstraintValidatorContext;
 
 
 
-public class StringEnumerationValidator implements ConstraintValidator<StringEnumeration, String> {
+public class StringEnumerationValidator implements ConstraintValidator<ValidSexo, String> {
 
-	private Set<String> AVAILABLE_ENUM_NAMES;
+	private Set<String> AVAILABLE_ENUM_NAMES ;
 
 	  public static Set<String> getNamesSet(Class<? extends Enum<?>> e) {
 	     Enum<?>[] enums = e.getEnumConstants();
@@ -24,8 +24,8 @@ public class StringEnumerationValidator implements ConstraintValidator<StringEnu
 	  }
 
 	  @Override
-	  public void initialize(StringEnumeration stringEnumeration) {
-	    Class<? extends Enum<?>> enumSelected = stringEnumeration.enumClass();
+	  public void initialize(ValidSexo validSexo) {
+	    Class<? extends Enum<?>> enumSelected = validSexo.enumClass();
 	    AVAILABLE_ENUM_NAMES = getNamesSet(enumSelected);
 	  }
 

@@ -27,8 +27,8 @@ public class Birds {
 	@Column
 	private LocalDate fNac;
 	@Column
-	private String sexo;
-	@Column
+	private EnumSexo sexo;
+	@Column(unique = true)
 	private Integer numAnilla;
 	@Column
 	private String especie;
@@ -37,8 +37,7 @@ public class Birds {
 	@Column
 	private String color;
 	
-//	@OneToMany(mappedBy = "birds")
-//	private List<Specimen> specimen=new ArrayList<Specimen>();
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Specimen specimen;
 	
@@ -62,16 +61,34 @@ public class Birds {
 	}
 
 
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
+//	public String getSexo() {
+//		return sexo;
+//	}
+//
+//	public void setSexo(String sexo) {
+//		this.sexo = sexo;
+//	}
+	
+	
 
 	public Integer getNumAnilla() {
 		return numAnilla;
+	}
+
+	public EnumSexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(EnumSexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public Specimen getSpecimen() {
+		return specimen;
+	}
+
+	public void setSpecimen(Specimen specimen) {
+		this.specimen = specimen;
 	}
 
 	public void setNumAnilla(Integer numAnilla) {
@@ -126,8 +143,8 @@ public class Birds {
 		
 	}
 
-	public Birds(Long id, LocalDate fNac, String sexo, Integer numAnilla, String especie, String nomCientif,
-			String color, Specimen spemcimen, Breeder breeder) {
+	public Birds(Long id, LocalDate fNac, EnumSexo sexo, Integer numAnilla, String especie, String nomCientif,
+			String color, Specimen specimen, Breeder breeder) {
 		super();
 		this.id = id;
 		this.fNac = fNac;
@@ -136,9 +153,23 @@ public class Birds {
 		this.especie = especie;
 		this.nomCientif = nomCientif;
 		this.color = color;
-		this.specimen = spemcimen;
+		this.specimen = specimen;
 		this.breeder = breeder;
 	}
+
+//	public Birds(Long id, LocalDate fNac, String sexo, Integer numAnilla, String especie, String nomCientif,
+//			String color, Specimen spemcimen, Breeder breeder) {
+//		super();
+//		this.id = id;
+//		this.fNac = fNac;
+//		this.sexo = sexo;
+//		this.numAnilla = numAnilla;
+//		this.especie = especie;
+//		this.nomCientif = nomCientif;
+//		this.color = color;
+//		this.specimen = spemcimen;
+//		this.breeder = breeder;
+//	}
 
 
 

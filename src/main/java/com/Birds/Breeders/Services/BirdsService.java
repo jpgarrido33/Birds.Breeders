@@ -4,17 +4,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.Birds.Breeders.DTO.BirdsDTO;
+import com.Birds.Breeders.Exception.BirdNotFoundException;
 import com.Birds.Breeders.Model.Birds;
 
 public interface BirdsService {
 	
 	Birds createBirds ( BirdsDTO  BirdsDto);
 	
-	Birds getBirds (long id);
+	Birds getBirds (long id) throws BirdNotFoundException;
 
 	Page<Birds> getListBirds (Pageable pageable);
 	
-	void deleteBirds (long id);
+	void deleteBirds (long id) throws BirdNotFoundException;
 	
 	Birds updateBirds (long id, BirdsDTO birdsDto );
 

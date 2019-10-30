@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
 import com.Birds.Breeders.Utils.EnumSexo;
-import com.Birds.Breeders.Utils.StringEnumeration;
+
 
 @Component
 public class BreederDTO {

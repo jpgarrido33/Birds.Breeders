@@ -2,6 +2,7 @@ package com.Birds.Breeders.DTO;
 
 import java.time.LocalDate;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import com.Birds.Breeders.Model.Breeder;
 import com.Birds.Breeders.Utils.EnumSexo;
+
+import com.Birds.Breeders.Utils.ValidSexo;
+
 @Component
 public class BirdsDTO {
 
@@ -17,14 +21,17 @@ public class BirdsDTO {
 	@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa")
 	private String fNac;
 	
-	private String sexo; // MACHO o HEMBRA
+	@NotNull
+	@ValidSexo(enumClass = EnumSexo.class)
+	private EnumSexo sexo; // MACHO o HEMBRA
+	
 	private Integer numAnilla;
 	private String especie;
 	private String nomCientif;
 	private String color;
 	
 	private BreederDTO breederDto;
-	/* nuevo*/
+	
 	private SpecimenDTO specimenDto;
 	
 
@@ -61,12 +68,18 @@ public class BirdsDTO {
 	
 	
 
-	public String getSexo() {
+//	public String getSexo() {
+//		return sexo;
+//	}
+//	public void setSexo(String sexo) {
+//		this.sexo = sexo;
+	public EnumSexo getSexo() {
 		return sexo;
 	}
-	public void setSexo(String sexo) {
+	public void setSexo(EnumSexo sexo) {
 		this.sexo = sexo;
 	}
+
 	public Integer getNumAnilla() {
 		return numAnilla;
 	}
@@ -99,9 +112,9 @@ public class BirdsDTO {
 	}
 	
 	
-	public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
-			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, String sexo, Integer numAnilla,
-			String especie, String nomCientif, String color, BreederDTO breederDto) {
+public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
+			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, EnumSexo sexo, Integer numAnilla,
+			String especie, String nomCientif, String color, BreederDTO breederDto, SpecimenDTO specimenDto) {
 		super();
 		this.id = id;
 		this.fNac = fNac;
@@ -111,7 +124,21 @@ public class BirdsDTO {
 		this.nomCientif = nomCientif;
 		this.color = color;
 		this.breederDto = breederDto;
+		this.specimenDto = specimenDto;
 	}
+//	public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
+//			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, String sexo, Integer numAnilla,
+//			String especie, String nomCientif, String color, BreederDTO breederDto) {
+//		super();
+//		this.id = id;
+//		this.fNac = fNac;
+//		this.sexo = sexo;
+//		this.numAnilla = numAnilla;
+//		this.especie = especie;
+//		this.nomCientif = nomCientif;
+//		this.color = color;
+//		this.breederDto = breederDto;
+//	}
 	public BirdsDTO() {
 		// TODO Auto-generated constructor stub
 	}

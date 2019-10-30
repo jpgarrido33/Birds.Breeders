@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.Birds.Breeders.DTO.BirdsDTO;
+import com.Birds.Breeders.Exception.BirdNotFoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Model.Breeder;
@@ -40,9 +41,9 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public Birds getBirds(long id) {
+	public Birds getBirds(long id) throws BirdNotFoundException {
 		
-		return birdsRepository.findById(id).orElseThrow(null);
+		return birdsRepository.findById(id).orElseThrow(BirdNotFoundException::new);
 	}
 
 	@Override
@@ -53,10 +54,9 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public void deleteBirds(long id) {
+	public void deleteBirds(long id) throws BirdNotFoundException {
 		
-		birdsRepository.delete(Optional.ofNullable(this.getBirds(id)).orElseThrow(null));
-		
+		birdsRepository.delete(Optional.ofNullable(this.getBirds(id)).orElseThrow(BirdNotFoundException:: new));
 		
 	}
 
