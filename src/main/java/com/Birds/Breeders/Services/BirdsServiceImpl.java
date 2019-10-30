@@ -43,7 +43,7 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public Page<Birds> getListBirds(Pageable pageable) {
+	public Page<Birds> getListBirds(Pageable pageable ) {
 	
 			return birdsRepository.findAll(pageable);
 		
@@ -61,7 +61,6 @@ public class BirdsServiceImpl implements BirdsService {
 	public Birds updateBirds(long id, BirdsDTO birdsDto) {
 		
 		Birds birds=this.getBirds(id);
-		//birds.setBreeder(birdsDto.getBreederDto());
 		birds.setColor(birdsDto.getColor());
 		birds.setEspecie(birdsDto.getEspecie());
 		birds.setfNac(LocalDate.parse(birdsDto.getfNac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
