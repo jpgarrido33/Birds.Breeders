@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.Exception.BirdNotFoundException;
+import com.Birds.Breeders.Exception.BreederNotfoundException;
 import com.Birds.Breeders.Model.Birds;
 
 public interface BirdsService {
@@ -19,7 +20,7 @@ public interface BirdsService {
 	
 	Birds updateBirds (long id, BirdsDTO birdsDto ) throws BirdNotFoundException;
 
-	Birds createRelationBB(Long idbird, Long idbreeder) throws BirdNotFoundException;
+	Birds createRelationBB(Long idbird, Long idbreeder) throws BirdNotFoundException, BreederNotfoundException;
 
 	Birds createrelationBS(Long idBirds, Long idSpecimen) throws BirdNotFoundException;
 }

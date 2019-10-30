@@ -48,14 +48,15 @@ public class BreederServiceImpl implements BreederService {
 	@Override
 	public Breeder updateBreeder(Long id, BreederDTO breederDto) {
 	
-		final Breeder breeder= this.getBreeder(id);
+		Breeder breeder= this.getBreeder(id);
 		
 		breeder.setNombre(breederDto.getNombre());
 		breeder.setApellidos(breederDto.getApellidos());
 		breeder.setFnac(LocalDate.parse(breederDto.getfNac(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		breeder.setNumCriador(breederDto.getNumCriador());
 		breeder.setSexo(breederDto.getSexo());
-		return breeder;
+		
+		return breederRepository.save(breeder);
 	}
 
 	

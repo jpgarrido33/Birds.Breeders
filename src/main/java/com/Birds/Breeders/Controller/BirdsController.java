@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.DTO.SpecimenDTO;
 import com.Birds.Breeders.Exception.BirdNotFoundException;
+import com.Birds.Breeders.Exception.BreederNotfoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Services.BirdsService;
@@ -59,7 +60,7 @@ public class BirdsController {
 	}
 	
 	@PutMapping ("/{idBird}/breeder/{idBreeder}")
-	public BirdsDTO CreateRelationBirdsBreeder(@PathVariable("idBird") Long idbird,@PathVariable("idBreeder") Long idbreeder) throws BirdNotFoundException {
+	public BirdsDTO CreateRelationBirdsBreeder(@PathVariable("idBird") Long idbird,@PathVariable("idBreeder") Long idbreeder) throws BirdNotFoundException, BreederNotfoundException {
 		
 		return mapper.mapToDto(BirdsSRV.createRelationBB(idbird, idbreeder));
 	}

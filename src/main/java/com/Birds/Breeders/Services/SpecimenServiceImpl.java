@@ -62,7 +62,7 @@ public class SpecimenServiceImpl implements SpecimenService {
 		Specimen specimen=this.getSpecimen(id);
 		specimen.setNombreespecie(specimendto.getNombreespecie());
 		
-		return specimen;
+		return specimentRepository.save(specimen);
 	}
 
 }

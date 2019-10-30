@@ -12,6 +12,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.Exception.BirdNotFoundException;
+import com.Birds.Breeders.Exception.BreederNotfoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Model.Breeder;
@@ -76,15 +77,17 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public Birds createRelationBB(Long idbird, Long idbreeder) throws BirdNotFoundException {
+	public Birds createRelationBB(Long idbird, Long idbreeder) throws BirdNotFoundException,BreederNotfoundException {
 		
-
 		
 		Birds birds= birdsSRV.getBirds(idbird);
 		Breeder breeder=breederSRV.getBreeder(idbreeder);
 		
 		if(birds==null) {
 			new BirdNotFoundException();
+		}
+		else if(breeder==null) {
+			new BreederNotfoundException();
 		}
 		
 		birds.setBreeder(breeder);
@@ -103,6 +106,7 @@ public class BirdsServiceImpl implements BirdsService {
 		if(birds==null) {
 			new BirdNotFoundException();
 		}
+		
 		birds.setSpemcimen(specimen);
 		List<Birds> listbirds=new ArrayList<Birds>();
 		listbirds.add(birds);
