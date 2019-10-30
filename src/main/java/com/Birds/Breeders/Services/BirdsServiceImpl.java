@@ -61,7 +61,7 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public Birds updateBirds(long id, BirdsDTO birdsDto) {
+	public Birds updateBirds(long id, BirdsDTO birdsDto) throws BirdNotFoundException {
 		
 		Birds birds=this.getBirds(id);
 		birds.setColor(birdsDto.getColor());
@@ -76,10 +76,16 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public Birds createRelationBB(Long idbird, Long idbreeder) {
+	public Birds createRelationBB(Long idbird, Long idbreeder) throws BirdNotFoundException {
+		
+
 		
 		Birds birds= birdsSRV.getBirds(idbird);
 		Breeder breeder=breederSRV.getBreeder(idbreeder);
+		
+		if(birds==null) {
+			new BirdNotFoundException();
+		}
 		
 		birds.setBreeder(breeder);
 		List<Birds> listbirds=new ArrayList<Birds>();
@@ -89,11 +95,14 @@ public class BirdsServiceImpl implements BirdsService {
 	}
 
 	@Override
-	public Birds createrelationBS(Long idbirds, Long idSpecimen) {
+	public Birds createrelationBS(Long idbirds, Long idSpecimen) throws BirdNotFoundException {
 
 		Birds birds=birdsSRV.getBirds(idbirds);
 		Specimen specimen= specimenSRV.getSpecimen(idSpecimen);
 		
+		if(birds==null) {
+			new BirdNotFoundException();
+		}
 		birds.setSpemcimen(specimen);
 		List<Birds> listbirds=new ArrayList<Birds>();
 		listbirds.add(birds);

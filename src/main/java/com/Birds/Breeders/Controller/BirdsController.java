@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.DTO.SpecimenDTO;
+import com.Birds.Breeders.Exception.BirdNotFoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Services.BirdsService;
@@ -39,7 +40,7 @@ public class BirdsController {
 	}
 	
 	@GetMapping("/{id}")
-	public BirdsDTO getBirdsId(@PathVariable ("id") Long id) {
+	public BirdsDTO getBirdsId(@PathVariable ("id") Long id) throws BirdNotFoundException {
 		return mapper.mapToDto(BirdsSRV.getBirds(id));
 		
 	}
@@ -51,27 +52,27 @@ public class BirdsController {
 	}
 	
 	@PutMapping ("/{id}")
-	public BirdsDTO updateBirds(@PathVariable("id") Long id, @RequestBody BirdsDTO birdsDto ) {
+	public BirdsDTO updateBirds(@PathVariable("id") Long id, @RequestBody BirdsDTO birdsDto ) throws BirdNotFoundException {
 		
 		return mapper.mapToDto(BirdsSRV.updateBirds(id, birdsDto));
 		
 	}
 	
 	@PutMapping ("/{idBird}/breeder/{idBreeder}")
-	public BirdsDTO CreateRelationBirdsBreeder(@PathVariable("idBird") Long idbird,@PathVariable("idBreeder") Long idbreeder) {
+	public BirdsDTO CreateRelationBirdsBreeder(@PathVariable("idBird") Long idbird,@PathVariable("idBreeder") Long idbreeder) throws BirdNotFoundException {
 		
 		return mapper.mapToDto(BirdsSRV.createRelationBB(idbird, idbreeder));
 	}
 	
 	@PutMapping("/{idBirds}/specimen/{idSpecimen}")
-	public BirdsDTO createRelationspecimenBirds(@PathVariable ("idBirds") Long idbirds, @PathVariable ("idSpecimen") Long idSpecimen){
+	public BirdsDTO createRelationspecimenBirds(@PathVariable ("idBirds") Long idbirds, @PathVariable ("idSpecimen") Long idSpecimen) throws BirdNotFoundException{
 		
 		return mapper.mapToDto(BirdsSRV.createrelationBS(idbirds,idSpecimen));
 	}
 	
 
 	@DeleteMapping("/{id}")
-	public void deleteBirds(@PathVariable("id") Long id) {
+	public void deleteBirds(@PathVariable("id") Long id) throws BirdNotFoundException {
 		BirdsSRV.deleteBirds(id);
 	}
 }

@@ -17,9 +17,9 @@ public interface BirdsService {
 	
 	void deleteBirds (long id) throws BirdNotFoundException;
 	
-	Birds updateBirds (long id, BirdsDTO birdsDto );
+	Birds updateBirds (long id, BirdsDTO birdsDto ) throws BirdNotFoundException;
 
-	Birds createRelationBB(Long idbird, Long idbreeder);
+	Birds createRelationBB(Long idbird, Long idbreeder) throws BirdNotFoundException;
 
-	Birds createrelationBS(Long idBirds, Long idSpecimen);
+	Birds createrelationBS(Long idBirds, Long idSpecimen) throws BirdNotFoundException;
 }
