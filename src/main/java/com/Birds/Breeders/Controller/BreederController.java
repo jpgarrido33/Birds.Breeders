@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Birds.Breeders.DTO.BreederDTO;
+import com.Birds.Breeders.Exception.BreederNotfoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Breeder;
 import com.Birds.Breeders.Services.BreederService;
@@ -34,7 +35,7 @@ public class BreederController {
 	}
 	
 	@GetMapping("/{id}")
-	public BreederDTO getBreederId(@PathVariable ("id") Long id) {
+	public BreederDTO getBreederId(@PathVariable ("id") Long id) throws BreederNotfoundException {
 		return mapperBreeder.mapToDto(breederSRV.getBreeder(id));
 	}
 	
@@ -52,7 +53,7 @@ public class BreederController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void  deleteBreeder(@PathVariable("id") Long id) {
+	public void  deleteBreeder(@PathVariable("id") Long id) throws BreederNotfoundException {
 		breederSRV.deleteBreeder(id);
 	}
 

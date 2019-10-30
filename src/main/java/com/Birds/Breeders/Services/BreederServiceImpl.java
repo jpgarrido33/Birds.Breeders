@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.Birds.Breeders.DTO.BreederDTO;
+import com.Birds.Breeders.Exception.BreederNotfoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Breeder;
 import com.Birds.Breeders.Repository.BreederRepository;
@@ -28,9 +29,9 @@ public class BreederServiceImpl implements BreederService {
 	}
 
 	@Override
-	public Breeder getBreeder(Long id) {
+	public Breeder getBreeder(Long id) throws BreederNotfoundException {
 		
-		return breederRepository.findById(id).get();
+		return breederRepository.findById(id).orElseThrow(BreederNotfoundException::new);
 	}
 
 	@Override
@@ -40,13 +41,13 @@ public class BreederServiceImpl implements BreederService {
 	}
 
 	@Override
-	public void deleteBreeder(Long id) {
-		breederRepository.delete(this.getBreeder(id));
+	public void deleteBreeder(Long id) throws BreederNotfoundException {
+		breederRepository.delete(Optional.ofNullable(this.getBreeder(id)).orElseThrow(BreederNotfoundException:: new));
 		
 	}
 
 	@Override
-	public Breeder updateBreeder(Long id, BreederDTO breederDto) {
+	public Breeder updateBreeder(Long id, BreederDTO breederDto) throws BreederNotfoundException {
 	
 		Breeder breeder= this.getBreeder(id);
 		
