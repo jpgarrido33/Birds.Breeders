@@ -46,7 +46,7 @@ public class BreederController {
 	}
 	
 	@PutMapping ("/{id}")
-	public BreederDTO updateBreeder(@PathVariable ("id") Long id, @RequestBody BreederDTO breederDto){
+	public BreederDTO updateBreeder(@PathVariable ("id") Long id, @RequestBody BreederDTO breederDto) throws BreederNotfoundException{
 		
 		return mapperBreeder.mapToDto(breederSRV.updateBreeder(id, breederDto));
 		
