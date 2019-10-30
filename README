@@ -29,7 +29,7 @@ Formato HTML para PostMan
 1.-GET-> Obtiene listado paginado de criadores -> http://localhost:8080/breeder
 2.-GET-> Obtiene un criador por id de criador -> http://localhost:8080/breeder/1*
 3.-POST->Añadir criador:  ->http://localhost:8080/breeder
-4.-PUT-> Modificar criador: -> http://localhost:8080/breeder/1* (revisar)
+4.-PUT-> Modificar criador: -> http://localhost:8080/breeder/1*
 5.-DELETE->Eliminar un criador por id -> http://localhost:8080/breeder/1*
 
 
