@@ -39,10 +39,10 @@ public class Birds {
 	
 //	@OneToMany(mappedBy = "birds")
 //	private List<Specimen> specimen=new ArrayList<Specimen>();
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Specimen specimen;
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Breeder breeder;
 
 	public Long getId() {
