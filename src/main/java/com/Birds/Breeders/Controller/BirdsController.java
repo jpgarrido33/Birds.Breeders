@@ -21,6 +21,7 @@ import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.DTO.SpecimenDTO;
 import com.Birds.Breeders.Exception.BirdNotFoundException;
 import com.Birds.Breeders.Exception.BreederNotfoundException;
+import com.Birds.Breeders.Exception.SpecimenNotFoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Services.BirdsService;
@@ -66,7 +67,7 @@ public class BirdsController {
 	}
 	
 	@PutMapping("/{idBirds}/specimen/{idSpecimen}")
-	public BirdsDTO createRelationspecimenBirds(@PathVariable ("idBirds") Long idbirds, @PathVariable ("idSpecimen") Long idSpecimen) throws BirdNotFoundException{
+	public BirdsDTO createRelationspecimenBirds(@PathVariable ("idBirds") Long idbirds, @PathVariable ("idSpecimen") Long idSpecimen) throws BirdNotFoundException, SpecimenNotFoundException{
 		
 		return mapper.mapToDto(BirdsSRV.createrelationBS(idbirds,idSpecimen));
 	}

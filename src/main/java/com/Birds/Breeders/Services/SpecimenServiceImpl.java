@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.Birds.Breeders.DTO.SpecimenDTO;
+import com.Birds.Breeders.Exception.SpecimenNotFoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Birds;
 import com.Birds.Breeders.Model.Specimen;
@@ -37,10 +38,10 @@ public class SpecimenServiceImpl implements SpecimenService {
 	}
 
 	@Override
-	public Specimen getSpecimen(Long id) {
+	public Specimen getSpecimen(Long id) throws SpecimenNotFoundException {
 		
 		
-		return specimentRepository.findById(id).orElseThrow(null);
+		return specimentRepository.findById(id).orElseThrow(SpecimenNotFoundException:: new);
 	}
 
 	@Override
@@ -50,14 +51,14 @@ public class SpecimenServiceImpl implements SpecimenService {
 	}
 
 	@Override
-	public void deleteSpecimen(Long id) {
+	public void deleteSpecimen(Long id) throws  SpecimenNotFoundException {
 		
-		specimentRepository.delete(Optional.ofNullable(this.getSpecimen(id)).orElseThrow(null));
+		specimentRepository.delete(Optional.ofNullable(this.getSpecimen(id)).orElseThrow(SpecimenNotFoundException:: new));
 		
 	}
 
 	@Override
-	public Specimen updateSpecimen(Long id, SpecimenDTO specimendto) {
+	public Specimen updateSpecimen(Long id, SpecimenDTO specimendto) throws SpecimenNotFoundException {
 		
 		Specimen specimen=this.getSpecimen(id);
 		specimen.setNombreespecie(specimendto.getNombreespecie());
