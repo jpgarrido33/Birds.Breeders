@@ -12,7 +12,7 @@ import com.Birds.Breeders.Utils.EnumSexo;
 
 @Component
 public class BreederDTO {
-	@NotNull(message="El valor no puede ser nulo")
+	
 	private Long id;
 	@NotNull(message="El valor no puede ser nulo")
 	private Integer numCriador;
@@ -22,7 +22,7 @@ public class BreederDTO {
 	private String apellidos;
 	@NotBlank(message="El campo fecha nacimiento no puede estar en  blanco")
 	private String fNac;
-	//@StringEnumeration(enumClass = EnumSexo.class) // creamos una anotacion para que solo valide MACHO o HEMBRA
+	
 	private String Sexo;
 	public Long getId() {
 		return id;

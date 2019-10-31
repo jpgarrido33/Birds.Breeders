@@ -1,5 +1,7 @@
 package com.Birds.Breeders.Controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,13 +42,13 @@ public class BreederController {
 	}
 	
 	@PostMapping
-	public BreederDTO createBreederDTO(@RequestBody BreederDTO breederDto) {
+	public BreederDTO createBreederDTO(@Valid @RequestBody BreederDTO breederDto) {
 		
 		return mapperBreeder.mapToDto(breederSRV.createBreeder(breederDto)) ;
 	}
 	
 	@PutMapping ("/{id}")
-	public BreederDTO updateBreeder(@PathVariable ("id") Long id, @RequestBody BreederDTO breederDto) throws BreederNotfoundException{
+	public BreederDTO updateBreeder(@Valid @PathVariable ("id") Long id, @RequestBody BreederDTO breederDto) throws BreederNotfoundException{
 		
 		return mapperBreeder.mapToDto(breederSRV.updateBreeder(id, breederDto));
 		

@@ -10,24 +10,27 @@ import org.springframework.stereotype.Component;
 
 import com.Birds.Breeders.Model.Breeder;
 import com.Birds.Breeders.Utils.EnumSexo;
-
+import com.Birds.Breeders.Utils.StringEnumerationValidator;
 import com.Birds.Breeders.Utils.ValidSexo;
 
 @Component
 public class BirdsDTO {
 
-	@NotNull(message="el valor no puede ser nulo")
+	
 	private Long id;
 	@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa")
 	private String fNac;
 	
+	@NotBlank
+	@ValidSexo
+	private String sexo; // MACHO o HEMBRA
 	@NotNull
-	@ValidSexo(enumClass = EnumSexo.class)
-	private EnumSexo sexo; // MACHO o HEMBRA
-	
 	private Integer numAnilla;
+	@NotBlank
 	private String especie;
+	@NotBlank
 	private String nomCientif;
+	@NotBlank
 	private String color;
 	
 	private BreederDTO breederDto;
@@ -68,17 +71,18 @@ public class BirdsDTO {
 	
 	
 
-//	public String getSexo() {
-//		return sexo;
-//	}
-//	public void setSexo(String sexo) {
-//		this.sexo = sexo;
-	public EnumSexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(EnumSexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+//	public EnumSexo getSexo() {
+//		return sexo;
+//	}
+//	public void setSexo(EnumSexo sexo) {
+//		this.sexo = sexo;
+//	}
 
 	public Integer getNumAnilla() {
 		return numAnilla;
@@ -113,7 +117,7 @@ public class BirdsDTO {
 	
 	
 public BirdsDTO(@NotNull(message = "el valor no puede ser nulo") Long id,
-			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, EnumSexo sexo, Integer numAnilla,
+			@NotBlank(message = "Debe especificar una fecha: yyyy-mm-aa") String fNac, String sexo, Integer numAnilla,
 			String especie, String nomCientif, String color, BreederDTO breederDto, SpecimenDTO specimenDto) {
 		super();
 		this.id = id;

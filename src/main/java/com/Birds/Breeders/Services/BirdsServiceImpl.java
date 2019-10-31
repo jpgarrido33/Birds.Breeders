@@ -4,14 +4,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.swing.JOptionPane;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.Birds.Breeders.DTO.BirdsDTO;
 import com.Birds.Breeders.Exception.BirdNotFoundException;
+import com.Birds.Breeders.Exception.BirdsDuplicateException;
 import com.Birds.Breeders.Exception.BreederNotfoundException;
 import com.Birds.Breeders.Exception.SpecimenNotFoundException;
 import com.Birds.Breeders.Mapper.MapperService;
@@ -36,10 +43,9 @@ public class BirdsServiceImpl implements BirdsService {
 	private SpecimenService specimenSRV;
 
 	@Override
-	public Birds createBirds(BirdsDTO birdsDto) {
-
-
-			return birdsRepository.save(mapperBirds.mapToEntity(birdsDto));
+	public Birds createBirds(BirdsDTO birdsDto) throws BirdsDuplicateException    {
+		
+		  return  birdsRepository.save(Optional.ofNullable(mapperBirds.mapToEntity(birdsDto)).orElseThrow(BirdsDuplicateException::new));
 	}
 
 	@Override
@@ -113,6 +119,12 @@ public class BirdsServiceImpl implements BirdsService {
 		listbirds.add(birds);
 		
 		return birdsRepository.save(birds);
+	}
+
+	@Override
+	public Page<Birds> getPageBirdsOrderBySpecimen(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return birdsRepository.pageBirdsOrderBySpecimen(pageable);
 	}
 
 }

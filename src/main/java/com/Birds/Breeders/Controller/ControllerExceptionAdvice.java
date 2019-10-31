@@ -13,6 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import com.Birds.Breeders.Exception.Error;
 import com.Birds.Breeders.Exception.SpecimenNotFoundException;
 import com.Birds.Breeders.Exception.BirdNotFoundException;
+import com.Birds.Breeders.Exception.BirdsDuplicateException;
 import com.Birds.Breeders.Exception.BreederNotfoundException;
 
 @ControllerAdvice
@@ -44,6 +45,14 @@ public class ControllerExceptionAdvice {
 		public ResponseEntity<Error> specimenNotFoundException(SpecimenNotFoundException ex, WebRequest request) {
 		errorDetail = new Error(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<Error>(errorDetail, HttpStatus.NOT_FOUND); 
+		}
+		
+		@ResponseBody
+		@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+		@ExceptionHandler(BirdsDuplicateException.class) 
+		public ResponseEntity<Error> birdsDuplicateException(BirdsDuplicateException ex, WebRequest request) {
+		errorDetail = new Error(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity<Error>(errorDetail, HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 	
 }

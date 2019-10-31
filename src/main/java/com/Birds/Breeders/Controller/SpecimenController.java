@@ -1,5 +1,7 @@
 package com.Birds.Breeders.Controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,14 +46,14 @@ public class SpecimenController {
 	}
 	
 	@PostMapping
-	public SpecimenDTO createSpecimen( @RequestBody SpecimenDTO specimenDto) {
+	public SpecimenDTO createSpecimen(@Valid @RequestBody SpecimenDTO specimenDto) {
 		
 		return mapperSpecimen.mapToDto(specimenSRV.createSpecimen(specimenDto));
 	}
 	
 
 	@PutMapping ("/{id}")
-	public SpecimenDTO updateSpecimen (@PathVariable ("id") Long id, @RequestBody SpecimenDTO specimenDto) throws SpecimenNotFoundException {
+	public SpecimenDTO updateSpecimen (@Valid @PathVariable ("id") Long id, @RequestBody SpecimenDTO specimenDto) throws SpecimenNotFoundException {
 		
 		return mapperSpecimen.mapToDto(specimenSRV.updateSpecimen(id, specimenDto));
 	}

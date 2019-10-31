@@ -27,8 +27,8 @@ public class Birds {
 	@Column
 	private LocalDate fNac;
 	@Column
-	private EnumSexo sexo;
-	@Column(unique = true)
+	private String sexo;
+	@Column
 	private Integer numAnilla;
 	@Column
 	private String especie;
@@ -61,13 +61,13 @@ public class Birds {
 	}
 
 
-//	public String getSexo() {
-//		return sexo;
-//	}
-//
-//	public void setSexo(String sexo) {
-//		this.sexo = sexo;
-//	}
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	
 	
 
@@ -75,13 +75,11 @@ public class Birds {
 		return numAnilla;
 	}
 
-	public EnumSexo getSexo() {
-		return sexo;
-	}
 
-	public void setSexo(EnumSexo sexo) {
-		this.sexo = sexo;
-	}
+
+
+
+	
 
 	public Specimen getSpecimen() {
 		return specimen;
@@ -143,7 +141,7 @@ public class Birds {
 		
 	}
 
-	public Birds(Long id, LocalDate fNac, EnumSexo sexo, Integer numAnilla, String especie, String nomCientif,
+	public Birds(Long id, LocalDate fNac, String sexo, Integer numAnilla, String especie, String nomCientif,
 			String color, Specimen specimen, Breeder breeder) {
 		super();
 		this.id = id;

@@ -12,6 +12,11 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+/**
+ * @author jpgarrido
+ * Realiza la validacion para sexo de la entidad Birds
+ */
+
 @Documented
 @Target({ METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
@@ -23,7 +28,6 @@ public @interface ValidSexo {
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
 
-  //Class<? extends Enum<?>> enumClass();
-  Class<EnumSexo> enumClass();
+
 
 }

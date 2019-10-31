@@ -22,7 +22,7 @@ public class Breeder {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@Column(unique = true, updatable = false)
 	private Long id;
-	@Column(unique = true)
+	@Column
 	private Integer numCriador;
 	@Column
 	private String Nombre;
