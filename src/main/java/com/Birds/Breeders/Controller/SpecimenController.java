@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Birds.Breeders.DTO.SpecimenDTO;
+import com.Birds.Breeders.Exception.SpecimenNotFoundException;
 import com.Birds.Breeders.Mapper.MapperService;
 import com.Birds.Breeders.Model.Specimen;
 import com.Birds.Breeders.Services.SpecimenService;
@@ -36,7 +37,7 @@ public class SpecimenController {
 	}
 	
 	@GetMapping ("/{id}")
-	public SpecimenDTO getSpecimen(@PathVariable ("id") Long id) {
+	public SpecimenDTO getSpecimen(@PathVariable ("id") Long id) throws SpecimenNotFoundException {
 		
 		return mapperSpecimen.mapToDto(specimenSRV.getSpecimen(id));
 		
@@ -50,13 +51,13 @@ public class SpecimenController {
 	
 
 	@PutMapping ("/{id}")
-	public SpecimenDTO updateSpecimen (@PathVariable ("id") Long id, @RequestBody SpecimenDTO specimenDto) {
+	public SpecimenDTO updateSpecimen (@PathVariable ("id") Long id, @RequestBody SpecimenDTO specimenDto) throws SpecimenNotFoundException {
 		
 		return mapperSpecimen.mapToDto(specimenSRV.updateSpecimen(id, specimenDto));
 	}
 	
 	@DeleteMapping ("/{id}")
-	public void deleteSpecimen(@PathVariable ("id") Long id) {
+	public void deleteSpecimen(@PathVariable ("id") Long id) throws SpecimenNotFoundException {
 		
 		specimenSRV.deleteSpecimen(id);
 	}
